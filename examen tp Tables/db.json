@@ -1,0 +1,18 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "identifiant": "150 Tunis",
+      "marque": "Kia",
+      "description": "6 zella",
+      "date": "11/12/2023"
+    },
+    {
+      "id": 2,
+      "identifiant": "100 Tunis",
+      "marque": "Marcedes",
+      "description": "4 zella",
+      "date": "10/12/2023"
+    }
+  ]
+}

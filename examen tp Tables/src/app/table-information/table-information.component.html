@@ -1,0 +1,83 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Table Information</a>
+
+      <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#studentModal" (click)="onAddClick();">Add</button>
+
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <table class="table table-hover table-striped table-responsive">
+      <thead>
+          <tr>
+              <th>Identifiant</th>
+              <th>Marque</th>
+              <th>Description</th>
+              <th>Date de construction</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of TableDetails">
+              <td>{{item.identifiant}}</td>
+              <td>{{item.marque}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.date}}</td>
+              <td>
+                  <button (click)="edit(item)" data-bs-toggle="modal" data-bs-target="#studentModal" class="btn btn-sm btn-warning text-white mx-2">Edit</button>
+
+                  <button (click)="delete(item.id)" class="btn btn-sm btn-danger">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="studentModal" tabindex="-1" aria-labelledby="studentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentModalLabel">Table Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="TableForm">
+              <div class="mb-3">
+                  <label  class="form-label">Identifiant</label>
+                  <input type="text" class="form-control"  placeholder="identifiant" formControlName="identifiant">
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Marque</label>
+                  <input type="email" class="form-control"  placeholder="marque" formControlName="marque">
+                </div>
+
+
+                <div class="mb-3">
+                  <label  class="form-label">Description</label>
+                  <input type="text" class="form-control"  placeholder="description" formControlName="description">
+                </div>
+
+
+                <div class="mb-3">
+                  <label  class="form-label">Date de construction</label>
+                  <input type="text" class="form-control"  placeholder="date de construction" formControlName="date">
+                </div>
+
+          </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close" (click)="reset();">Close</button>
+        <button type="button" class="btn btn-primary" (click)="update()" *ngIf="showUpdateBtn">Update </button>
+
+        <button type="button" class="btn btn-success" (click)="post()" *ngIf="showAddBtn">Add </button>
+      </div>
+    </div>
+  </div>
+</div>
